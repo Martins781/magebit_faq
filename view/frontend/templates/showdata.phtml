@@ -1,0 +1,52 @@
+<?php
+
+    if (array_key_exists('ASC', $_POST)) {
+        $collection = $block->getCollection()->setOrder('position', 'ASC');
+    }
+    else if (array_key_exists('DESC', $_POST)) {
+        $collection = $block->getCollection()->setOrder('position', 'DESC');
+    }
+    else {
+        $collection = $block->getCollection()->setOrder('position', 'ASC');
+    }
+
+    if ($collection->count()) {
+    ?>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magebit_Faq::css/source/module.css')?>">
+    </head>
+    <div class="table-wrapper orders-history">
+        <h1>Frequently asked questions</h1>
+
+        <form method="post">
+            <input type="submit" name="ASC"
+                   class="button" value="Sort ASC" />
+
+            <input type="submit" name="DESC"
+                   class="button" value="Sort DESC" />
+        </form>
+
+        <div id="element">
+            <?php
+            foreach ($collection as $item): ?>
+                <div data-role="collapsible">
+                    <div data-role="trigger">
+                        <div class="question"><?php echo $item->getQuestion() ?></div>
+                    </div>
+                </div>
+                <div data-role="content" class="answer"><?php echo $item->getAnswer() ?></div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <script>
+        require([
+            'jquery',
+            'accordion'
+        ], function($) {
+            $("#element").accordion();
+        });
+    </script>
+    <?php
+}
+?>

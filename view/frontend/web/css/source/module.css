@@ -1,0 +1,29 @@
+#sort {
+    cursor: pointer;
+}
+
+.button {
+    padding: 10px;
+    margin:10px;
+    margin-top: 5px;
+    margin-left: 0px;
+}
+
+.question {
+    background: #D3D3D3;
+    text-transform: uppercase;
+    padding-left: 10px;
+    font-size: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    cursor: pointer;
+}
+
+.answer {
+    cursor:default;
+    background: white;
+    font-size: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
